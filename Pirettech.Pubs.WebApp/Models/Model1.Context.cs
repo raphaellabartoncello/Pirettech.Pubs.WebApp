@@ -25,9 +25,9 @@ namespace Pirettech.Pubs.WebApp.Models
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<author> authors { get; set; }
-        public virtual DbSet<publisher> publishers { get; set; }
-        public virtual DbSet<titleauthor> titleauthors { get; set; }
-        public virtual DbSet<title> titles { get; set; }
+        public virtual DbSet<Autor> Autor { get; set; }
+        public virtual DbSet<Editora> Editoras { get; set; }
+        public virtual DbSet<LivroAutor> LivrosAutores { get; set; }
+        public virtual DbSet<Livro> Livros { get; set; }
     }
 }

@@ -12,25 +12,25 @@ namespace Pirettech.Pubs.WebApp.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class author
+    public partial class Autor
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public author()
+        public Autor()
         {
-            this.titleauthors = new HashSet<titleauthor>();
+            this.LivrosAutores = new HashSet<LivroAutor>();
         }
     
-        public string au_id { get; set; }
-        public string au_lname { get; set; }
-        public string au_fname { get; set; }
-        public string phone { get; set; }
-        public string address { get; set; }
-        public string city { get; set; }
-        public string state { get; set; }
-        public string zip { get; set; }
-        public bool contract { get; set; }
+        public string AutorId { get; set; }
+        public string Sobrenome { get; set; }
+        public string Nome { get; set; }
+        public string Telefone { get; set; }
+        public string Endereco { get; set; }
+        public string Cidade { get; set; }
+        public string Estado { get; set; }
+        public string CEP { get; set; }
+        public bool Contrato { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<titleauthor> titleauthors { get; set; }
+        public virtual ICollection<LivroAutor> LivrosAutores { get; set; }
     }
 }

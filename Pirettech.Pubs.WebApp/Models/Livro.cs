@@ -12,27 +12,27 @@ namespace Pirettech.Pubs.WebApp.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class title
+    public partial class Livro
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public title()
+        public Livro()
         {
-            this.titleauthors = new HashSet<titleauthor>();
+            this.LivroAutor = new HashSet<LivroAutor>();
         }
     
-        public string title_id { get; set; }
-        public string title1 { get; set; }
-        public string type { get; set; }
-        public string pub_id { get; set; }
-        public Nullable<decimal> price { get; set; }
-        public Nullable<decimal> advance { get; set; }
+        public string LivroId { get; set; }
+        public string Titulo { get; set; }
+        public string Tipo { get; set; }
+        public string EditoraId { get; set; }
+        public Nullable<decimal> Preco { get; set; }
+        public Nullable<decimal> Adiantamento { get; set; }
         public Nullable<int> royalty { get; set; }
-        public Nullable<int> ytd_sales { get; set; }
-        public string notes { get; set; }
-        public System.DateTime pubdate { get; set; }
+        public Nullable<int> VendasAnuais { get; set; }
+        public string Notas { get; set; }
+        public System.DateTime DataPublicacao { get; set; }
     
-        public virtual publisher publisher { get; set; }
+        public virtual Editora Editora { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<titleauthor> titleauthors { get; set; }
+        public virtual ICollection<LivroAutor> LivroAutor { get; set; }
     }
 }

@@ -12,21 +12,21 @@ namespace Pirettech.Pubs.WebApp.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class publisher
+    public partial class Editora
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public publisher()
+        public Editora()
         {
-            this.titles = new HashSet<title>();
+            this.Livros = new HashSet<Livro>();
         }
     
-        public string pub_id { get; set; }
-        public string pub_name { get; set; }
-        public string city { get; set; }
-        public string state { get; set; }
-        public string country { get; set; }
+        public string EditoraId { get; set; }
+        public string Nome { get; set; }
+        public string Cidade { get; set; }
+        public string Estado { get; set; }
+        public string Pais { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<title> titles { get; set; }
+        public virtual ICollection<Livro> Livros { get; set; }
     }
 }

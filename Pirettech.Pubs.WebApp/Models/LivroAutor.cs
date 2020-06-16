@@ -12,14 +12,14 @@ namespace Pirettech.Pubs.WebApp.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class titleauthor
+    public partial class LivroAutor
     {
-        public string au_id { get; set; }
-        public string title_id { get; set; }
-        public Nullable<byte> au_ord { get; set; }
-        public Nullable<int> royaltyper { get; set; }
+        public string AutorId { get; set; }
+        public string LivroId { get; set; }
+        public Nullable<byte> AutorOrdem { get; set; }
+        public Nullable<int> TipoRoyalty { get; set; }
     
-        public virtual author author { get; set; }
-        public virtual title title { get; set; }
+        public virtual Autor Autor { get; set; }
+        public virtual Livro Livro { get; set; }
     }
 }
