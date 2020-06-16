@@ -137,7 +137,7 @@
           <Property Name="Cidade" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="Estado" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
           <Property Name="Pais" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="titles" Relationship="Self.FK__titles__pub_id__2D27B809" FromRole="publishers" ToRole="titles" />
+          <NavigationProperty Name="Livros" Relationship="Self.FK__titles__pub_id__2D27B809" FromRole="publishers" ToRole="titles" />
         </EntityType>
         <EntityType Name="titleauthor">
           <Key>
@@ -151,22 +151,22 @@
           <NavigationProperty Name="author" Relationship="Self.FK__titleauth__au_id__30F848ED" FromRole="titleauthor" ToRole="authors" />
           <NavigationProperty Name="title" Relationship="Self.FK__titleauth__title__31EC6D26" FromRole="titleauthor" ToRole="titles" />
         </EntityType>
-        <EntityType Name="title">
+        <EntityType Name="Livro">
           <Key>
-            <PropertyRef Name="title_id" />
+            <PropertyRef Name="LivroId" />
           </Key>
-          <Property Name="title_id" Type="String" MaxLength="6" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="title1" Type="String" MaxLength="80" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="type" Type="String" MaxLength="12" FixedLength="true" Unicode="false" Nullable="false" />
-          <Property Name="pub_id" Type="String" MaxLength="4" FixedLength="true" Unicode="false" />
-          <Property Name="price" Type="Decimal" Precision="19" Scale="4" />
-          <Property Name="advance" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="LivroId" Type="String" MaxLength="6" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Titulo" Type="String" MaxLength="80" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Tipo" Type="String" MaxLength="12" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="EditoraId" Type="String" MaxLength="4" FixedLength="true" Unicode="false" />
+          <Property Name="Preco" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Adiantamento" Type="Decimal" Precision="19" Scale="4" />
           <Property Name="royalty" Type="Int32" />
-          <Property Name="ytd_sales" Type="Int32" />
-          <Property Name="notes" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="pubdate" Type="DateTime" Nullable="false" Precision="3" />
-          <NavigationProperty Name="publisher" Relationship="Self.FK__titles__pub_id__2D27B809" FromRole="titles" ToRole="publishers" />
-          <NavigationProperty Name="titleauthors" Relationship="Self.FK__titleauth__title__31EC6D26" FromRole="titles" ToRole="titleauthor" />
+          <Property Name="VendasAnuais" Type="Int32" />
+          <Property Name="Notas" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="DataPublicacao" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Editora" Relationship="Self.FK__titles__pub_id__2D27B809" FromRole="titles" ToRole="publishers" />
+          <NavigationProperty Name="LivroAutor" Relationship="Self.FK__titleauth__title__31EC6D26" FromRole="titles" ToRole="titleauthor" />
         </EntityType>
         <Association Name="FK__titleauth__au_id__30F848ED">
           <End Role="authors" Type="Self.author" Multiplicity="1" />
@@ -182,22 +182,22 @@
         </Association>
         <Association Name="FK__titles__pub_id__2D27B809">
           <End Role="publishers" Type="pubsModel.Editora" Multiplicity="0..1" />
-          <End Role="titles" Type="Self.title" Multiplicity="*" />
+          <End Role="titles" Type="pubsModel.Livro" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="publishers">
               <PropertyRef Name="EditoraId" />
             </Principal>
             <Dependent Role="titles">
-              <PropertyRef Name="pub_id" />
+              <PropertyRef Name="EditoraId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__titleauth__title__31EC6D26">
-          <End Role="titles" Type="Self.title" Multiplicity="1" />
+          <End Role="titles" Type="pubsModel.Livro" Multiplicity="1" />
           <End Role="titleauthor" Type="Self.titleauthor" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="titles">
-              <PropertyRef Name="title_id" />
+              <PropertyRef Name="LivroId" />
             </Principal>
             <Dependent Role="titleauthor">
               <PropertyRef Name="title_id" />
@@ -208,17 +208,17 @@
           <EntitySet Name="authors" EntityType="Self.author" />
           <EntitySet Name="Editoras" EntityType="pubsModel.Editora" />
           <EntitySet Name="titleauthors" EntityType="Self.titleauthor" />
-          <EntitySet Name="titles" EntityType="Self.title" />
+          <EntitySet Name="Livros" EntityType="pubsModel.Livro" />
           <AssociationSet Name="FK__titleauth__au_id__30F848ED" Association="Self.FK__titleauth__au_id__30F848ED">
             <End Role="authors" EntitySet="authors" />
             <End Role="titleauthor" EntitySet="titleauthors" />
           </AssociationSet>
           <AssociationSet Name="FK__titles__pub_id__2D27B809" Association="Self.FK__titles__pub_id__2D27B809">
             <End Role="publishers" EntitySet="Editoras" />
-            <End Role="titles" EntitySet="titles" />
+            <End Role="titles" EntitySet="Livros" />
           </AssociationSet>
           <AssociationSet Name="FK__titleauth__title__31EC6D26" Association="Self.FK__titleauth__title__31EC6D26">
-            <End Role="titles" EntitySet="titles" />
+            <End Role="titles" EntitySet="Livros" />
             <End Role="titleauthor" EntitySet="titleauthors" />
           </AssociationSet>
         </EntityContainer>
@@ -264,19 +264,19 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="titles">
-            <EntityTypeMapping TypeName="pubsModel.title">
+          <EntitySetMapping Name="Livros">
+            <EntityTypeMapping TypeName="pubsModel.Livro">
               <MappingFragment StoreEntitySet="titles">
-                <ScalarProperty Name="title_id" ColumnName="title_id" />
-                <ScalarProperty Name="title1" ColumnName="title" />
-                <ScalarProperty Name="type" ColumnName="type" />
-                <ScalarProperty Name="pub_id" ColumnName="pub_id" />
-                <ScalarProperty Name="price" ColumnName="price" />
-                <ScalarProperty Name="advance" ColumnName="advance" />
+                <ScalarProperty Name="LivroId" ColumnName="title_id" />
+                <ScalarProperty Name="Titulo" ColumnName="title" />
+                <ScalarProperty Name="Tipo" ColumnName="type" />
+                <ScalarProperty Name="EditoraId" ColumnName="pub_id" />
+                <ScalarProperty Name="Preco" ColumnName="price" />
+                <ScalarProperty Name="Adiantamento" ColumnName="advance" />
                 <ScalarProperty Name="royalty" ColumnName="royalty" />
-                <ScalarProperty Name="ytd_sales" ColumnName="ytd_sales" />
-                <ScalarProperty Name="notes" ColumnName="notes" />
-                <ScalarProperty Name="pubdate" ColumnName="pubdate" />
+                <ScalarProperty Name="VendasAnuais" ColumnName="ytd_sales" />
+                <ScalarProperty Name="Notas" ColumnName="notes" />
+                <ScalarProperty Name="DataPublicacao" ColumnName="pubdate" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
