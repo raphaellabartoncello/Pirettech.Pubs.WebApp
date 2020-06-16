@@ -162,6 +162,9 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Home\Livro.cshtml" />
+    <Content Include="Views\Home\Autor.cshtml" />
+    <Content Include="Views\Home\Editora.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

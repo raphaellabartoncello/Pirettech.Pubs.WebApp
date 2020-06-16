@@ -26,5 +26,20 @@ namespace Pirettech.Pubs.WebApp.Controllers
 
             return View();
         }
+
+        public ActionResult Livro()
+        {
+            return View();
+        }
+
+        public ActionResult Autor()
+        {
+            return View();
+        }
+
+        public ActionResult Editora()
+        {
+            return View();
+        }
     }
 }
