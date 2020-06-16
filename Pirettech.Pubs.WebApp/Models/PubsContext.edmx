@@ -113,20 +113,20 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="pubsModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="author">
+        <EntityType Name="Autor">
           <Key>
-            <PropertyRef Name="au_id" />
+            <PropertyRef Name="AutorId" />
           </Key>
-          <Property Name="au_id" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="au_lname" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="au_fname" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="phone" Type="String" MaxLength="12" FixedLength="true" Unicode="false" Nullable="false" />
-          <Property Name="address" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
-          <Property Name="city" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="state" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
-          <Property Name="zip" Type="String" MaxLength="5" FixedLength="true" Unicode="false" />
-          <Property Name="contract" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="titleauthors" Relationship="Self.FK__titleauth__au_id__30F848ED" FromRole="authors" ToRole="titleauthor" />
+          <Property Name="AutorId" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Sobrenome" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Nome" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Telefone" Type="String" MaxLength="12" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Endereco" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="Cidade" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Estado" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="CEP" Type="String" MaxLength="5" FixedLength="true" Unicode="false" />
+          <Property Name="Contrato" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="LivroAutor" Relationship="Self.FK__titleauth__au_id__30F848ED" FromRole="authors" ToRole="titleauthor" />
         </EntityType>
         <EntityType Name="Editora">
           <Key>
@@ -169,11 +169,11 @@
           <NavigationProperty Name="LivroAutor" Relationship="Self.FK__titleauth__title__31EC6D26" FromRole="titles" ToRole="titleauthor" />
         </EntityType>
         <Association Name="FK__titleauth__au_id__30F848ED">
-          <End Role="authors" Type="Self.author" Multiplicity="1" />
+          <End Role="authors" Type="pubsModel.Autor" Multiplicity="1" />
           <End Role="titleauthor" Type="pubsModel.LivroAutor" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="authors">
-              <PropertyRef Name="au_id" />
+              <PropertyRef Name="AutorId" />
             </Principal>
             <Dependent Role="titleauthor">
               <PropertyRef Name="AutorId" />
@@ -205,12 +205,12 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="pubsEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="authors" EntityType="Self.author" />
+          <EntitySet Name="Autor" EntityType="pubsModel.Autor" />
           <EntitySet Name="Editoras" EntityType="pubsModel.Editora" />
           <EntitySet Name="LivroAutor" EntityType="pubsModel.LivroAutor" />
           <EntitySet Name="Livros" EntityType="pubsModel.Livro" />
           <AssociationSet Name="FK__titleauth__au_id__30F848ED" Association="Self.FK__titleauth__au_id__30F848ED">
-            <End Role="authors" EntitySet="authors" />
+            <End Role="authors" EntitySet="Autor" />
             <End Role="titleauthor" EntitySet="LivroAutor" />
           </AssociationSet>
           <AssociationSet Name="FK__titles__pub_id__2D27B809" Association="Self.FK__titles__pub_id__2D27B809">
@@ -228,18 +228,18 @@
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="pubsModelStoreContainer" CdmEntityContainer="pubsEntities">
-          <EntitySetMapping Name="authors">
-            <EntityTypeMapping TypeName="pubsModel.author">
+          <EntitySetMapping Name="Autor">
+            <EntityTypeMapping TypeName="pubsModel.Autor">
               <MappingFragment StoreEntitySet="authors">
-                <ScalarProperty Name="au_id" ColumnName="au_id" />
-                <ScalarProperty Name="au_lname" ColumnName="au_lname" />
-                <ScalarProperty Name="au_fname" ColumnName="au_fname" />
-                <ScalarProperty Name="phone" ColumnName="phone" />
-                <ScalarProperty Name="address" ColumnName="address" />
-                <ScalarProperty Name="city" ColumnName="city" />
-                <ScalarProperty Name="state" ColumnName="state" />
-                <ScalarProperty Name="zip" ColumnName="zip" />
-                <ScalarProperty Name="contract" ColumnName="contract" />
+                <ScalarProperty Name="AutorId" ColumnName="au_id" />
+                <ScalarProperty Name="Sobrenome" ColumnName="au_lname" />
+                <ScalarProperty Name="Nome" ColumnName="au_fname" />
+                <ScalarProperty Name="Telefone" ColumnName="phone" />
+                <ScalarProperty Name="Endereco" ColumnName="address" />
+                <ScalarProperty Name="Cidade" ColumnName="city" />
+                <ScalarProperty Name="Estado" ColumnName="state" />
+                <ScalarProperty Name="CEP" ColumnName="zip" />
+                <ScalarProperty Name="Contrato" ColumnName="contract" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
