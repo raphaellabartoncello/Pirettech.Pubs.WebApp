@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Pirettech.Pubs.WebApp.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -39,7 +40,17 @@ namespace Pirettech.Pubs.WebApp.Controllers
 
         public ActionResult Editora()
         {
-            return View();
+            List<Editora> listaEditora = null;
+            try
+            {
+                listaEditora = BibliotecaDB.EditorasLista();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            //Retorna uma lista tipada do tipo Editora, pois a View espera receber um IEnumerable (é uma lista mas não permite alterações)
+            return View(listaEditora);
         }
     }
 }

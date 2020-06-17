@@ -1,9 +1,51 @@
-﻿
+﻿@model IEnumerable<Pirettech.Pubs.WebApp.Models.Editora>
+
 @{
     ViewBag.Title = "Editora";
 }
 
 <h2>Editora</h2>
 
-<hr />
+<p>
+    @Html.ActionLink("Cadastrar", "Cadastrar", null, new { @class="btn btn-primary"})
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Nome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Cidade)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Estado)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Pais)
+        </th>
+        <th></th>
+    </tr>
 
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nome)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Cidade)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Estado)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Pais)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.EditoraId }, new { @class = "btn btn-primary" }) |
+            @Html.ActionLink("Details", "Details", new { id=item.EditoraId }, new { @class = "btn btn-primary" }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.EditoraId }, new { @class = "btn btn-primary" })
+        </td>
+    </tr>
+}
+
+</table>
