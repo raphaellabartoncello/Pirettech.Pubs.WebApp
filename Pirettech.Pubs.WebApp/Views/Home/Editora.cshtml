@@ -41,9 +41,10 @@
             @Html.DisplayFor(modelItem => item.Pais)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.EditoraId }, new { @class = "btn btn-primary" }) |
-            @Html.ActionLink("Details", "Details", new { id=item.EditoraId }, new { @class = "btn btn-primary" }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.EditoraId }, new { @class = "btn btn-primary" })
+            @Html.ActionLink("Lista de Livros", "LivrosPorEditora", new { id = item.EditoraId }, new { @class = "btn btn-sucess" }) |
+            @Html.ActionLink("Edit", "Edit", new { id = item.EditoraId }, new { @class = "btn btn-primary" }) |
+            @Html.ActionLink("Details", "Details", new { id = item.EditoraId }, new { @class = "btn btn-primary" }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.EditoraId }, new { @class = "btn btn-danger" })
         </td>
     </tr>
 }
