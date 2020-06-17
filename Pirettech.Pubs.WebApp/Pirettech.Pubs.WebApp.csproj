@@ -135,6 +135,7 @@
     <Compile Include="Models\Autor.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\AutorCustom.cs" />
     <Compile Include="Models\BibliotecaDB.cs" />
     <Compile Include="Models\Editora.cs">
       <DependentUpon>Model1.tt</DependentUpon>
@@ -218,6 +219,8 @@
     <Content Include="Views\Home\Livro.cshtml" />
     <Content Include="Views\Home\Autor.cshtml" />
     <Content Include="Views\Home\Editora.cshtml" />
+    <Content Include="Views\Home\LivrosPorEditora.cshtml" />
+    <Content Include="Views\Home\DetalhesAutor.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
