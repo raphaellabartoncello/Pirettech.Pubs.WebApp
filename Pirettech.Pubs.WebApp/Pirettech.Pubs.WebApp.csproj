@@ -221,6 +221,7 @@
     <Content Include="Views\Home\Editora.cshtml" />
     <Content Include="Views\Home\LivrosPorEditora.cshtml" />
     <Content Include="Views\Home\DetalhesAutor.cshtml" />
+    <Content Include="Views\Home\LivrosPorAutor.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
