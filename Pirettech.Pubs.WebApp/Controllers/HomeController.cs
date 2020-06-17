@@ -80,31 +80,6 @@ namespace Pirettech.Pubs.WebApp.Controllers
             return View(listaDeLivros);
         }
 
-        public ActionResult LivrosPorAutor(string id)
-        {
-            List<Livro> listaDeLivros = null;
-
-            try
-            {
-                if (string.IsNullOrEmpty(id))
-                {
-                    throw new Exception("A consulta solicitada é inválida.");
-                }
-
-                listaDeLivros = BibliotecaDB.LivrosPorAutor(id.ToString());
-
-                if (listaDeLivros == null)
-                {
-                    throw new Exception("O livro consultado não é válido.");
-                }
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-            //Retorna uma lista tipada do tipo Editora, pois a View espera receber um IEnumerable (é uma lista mas não permite alterações)
-            return View(listaDeLivros);
-        }
 
         public ActionResult Autor()
         {
