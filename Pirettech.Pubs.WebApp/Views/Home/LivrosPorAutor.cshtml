@@ -1,0 +1,82 @@
+﻿@model IEnumerable<Pirettech.Pubs.WebApp.Models.Livro>
+
+@{
+    ViewBag.Title = "LivrosPorAutor";
+}
+
+<h2>Livros por autor</h2>
+
+<p>
+    @Html.ActionLink("Cadastrar", "Cadastrar", null, new { @class = "btn btn-primary btn-sm" })
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Titulo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Tipo)
+        </th>
+        @*<th>
+            @Html.DisplayNameFor(model => model.EditoraId)
+        </th>*@
+        <th>
+            @Html.DisplayNameFor(model => model.Preco)
+        </th>
+        @*<th>
+            @Html.DisplayNameFor(model => model.Adiantamento)
+        </th>*@
+        @*<th>
+            @Html.DisplayNameFor(model => model.royalty)
+        </th>*@
+        <th>
+            @Html.DisplayNameFor(model => model.VendasAnuais)
+        </th>
+        @*<th>
+            @Html.DisplayNameFor(model => model.Notas)
+        </th>*@
+        <th>
+            @Html.DisplayNameFor(model => model.DataPublicacao)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Titulo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Tipo)
+            </td>
+            @*<td>
+                @Html.DisplayFor(modelItem => item.EditoraId)
+            </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.Preco)
+            </td>
+            @*<td>
+                @Html.DisplayFor(modelItem => item.Adiantamento)
+            </td>*@
+            @*<td>
+                @Html.DisplayFor(modelItem => item.royalty)
+            </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.VendasAnuais)
+            </td>
+            @*<td>
+                @Html.DisplayFor(modelItem => item.Notas)
+            </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.DataPublicacao)
+            </td>
+            <td>
+                @*@Html.ActionLink("Edit", "Edit", new { id = item.LivroId }) |
+                @Html.ActionLink("Details", "Details", new { id = item.LivroId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.LivroId })*@
+            </td>
+        </tr>
+    }
+
+</table>
